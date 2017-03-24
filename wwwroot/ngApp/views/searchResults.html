@@ -1,0 +1,73 @@
+﻿<!--WINDOW SIMPLE-->
+<div class="container-fluid" padding-left:5cm;>
+    <div class="row">
+        <div class="col-md-8 col-lg-8" ng-repeat="place in controller.places.results">
+            <div class="media-left col-md-3">
+                <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{place.photos[0].photo_reference}} &key=AIzaSyD10NZ665gJtfV-ZBcW9R7kShyThvHelJQ" class="media-object" style="height:150px; width:150px" />
+            </div>
+            <div class="media-body row row-md-6">
+                <div class="col-md-3">
+                    <h4 class="media-heading">
+                    <a ng-click="controller.savePlace(place.place_id)">{{place.name}}</a>
+                    </h4>
+                    <img src={{place.icon}} class="media-object" style="height:20px; width:20px" />
+                    <p>{{place.price_level}}</p>
+                    <p>{{place.rating}}</p>
+                    <p>{{place.vicinity}}</p>
+                    
+                </div>
+                <div class="col-md-3">
+                    <h5 class="media-heading">{{place.formatted_address}}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <ng-map default-style="true" center="current-position" zoom="11" style="height:200px; width:300px">
+                <marker position={{place.geometry}}
+                        on-mouseover="map.showInfoWindow('business')">
+                </marker>
+                <info-window id="business">
+                    <div ng-non-bindable>
+                        Name: {{place.name}}
+                        Address: {{place.formatted_address}}
+                    </div>
+                </info-window>
+            </ng-map>
+        </div>
+    </div>
+</div>
+
+<!--<ul>
+    <li ng-repeat="place in controller.places.results">
+        <img src={{place.icon}} class="media-object" style="height:20px; width:20px" />
+        <a ui-sref="details">
+            {{place.name}}<onclick ="saveplace({{place.place_id}})"/a>
+            <img src=https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{place.photos[0].photo_reference}}&key=AIzaSyBxJ_AEIxYMjjdpJ3hURnCt13To-6uNawU class="media-object" style="height:150px; width:150px" />
+            Price: {{place.price_level}}
+            Rating: {{place.rating}}
+            Nearby: {{place.vicinity}}
+
+
+    </li>
+</ul>-->
+<!--<br />
+
+<
+
+<br />
+
+<
+<div class="row">
+    <div class="col-md-8">
+        md
+        di
+        <div class="media">
+            <div class="media-left">
+                <img src="http://www.hercampus.com/sites/default/files/styles/full_width_embed/public/2014/12/11/hc%20coffee%20shop.jpg?itok=1UdW0qHF" class="media-object" style="width:45px;" />
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Top Comment</h4>
+                <p>Comment  <span class="badge">3</span></p>
+            </div>
+        </div>
+    </div>-->

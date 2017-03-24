@@ -1,0 +1,105 @@
+﻿<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<div class="row profile">
+    <div class="col-md-3">
+        <div class="profile-sidebar">
+            <!-- SIDEBAR USERPIC -->
+            <div class="profile-userpic">
+                <img src="{{controller.applicationUser.image}}" width="300" ; height="300" ; />
+            </div>
+            <!-- END SIDEBAR USERPIC -->
+            <!-- SIDEBAR USER TITLE -->
+            <div class="profile-usertitle">
+                <div class="profile-usertitle-name">
+                    <h3>{{controller.applicationUser.firstName}} {{controller.applicationUser.lastName}}</h3>
+                </div>
+            </div>
+            <!-- END SIDEBAR USER TITLE -->
+            <!-- SIDEBAR BUTTONS -->
+            <!--<div class="profile-userbuttons">
+                <button type="button" class="btn btn-success btn-sm">Follow</button>
+                <button type="button" class="btn btn-danger btn-sm">Message</button>
+            </div>-->
+            <!-- END SIDEBAR BUTTONS -->
+            <!-- SIDEBAR MENU -->
+            <div class="profile-usermenu">
+                <ul class="nav">
+                    <li class="active">
+                        <a ui-sref="home">
+                            <i class="glyphicon glyphicon-home"></i>
+                            Overview
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="/editprofile">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Account Settings
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- END MENU -->
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="container">
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+            <div class="row">
+                <!-- Contenedor Principal -->
+                <div class="comments-container">
+                    <h1 class="sloganFont">Comments and Feedback </h1>
+                    <ul id="comments-list" class="comments-list">
+                        <li>
+                            <div class="comment-main-level" ng-repeat="feedback in controller.feedbacks">
+                                <!-- Avatar -->
+                                <div class="comment-avatar"><img src="{{controller.applicationUser.image}}" width="50"; height="50" alt=""></div>
+                                <!-- Contenedor del Comentario -->
+                                <div class="comment-box">
+                                    <div class="comment-head" >
+                                        <h6 class="comment-name by-author">{{controller.applicationUser.firstName}} {{controller.applicationUser.lastName}}</h6>
+                                        <span>{{date | timeago}}</span>
+                                        <i class="fa fa-reply" ng-click="controller.openModal('profilesModal.html', feedback.id)"></i>
+                                        <i class="fa fa-heart"></i>
+                                    </div>
+                                    
+                                    <div class="comment-content" >
+                                        {{controller.applicationUser.feedback}}
+                                        {{feedback.message}}
+                                        </div>
+                                       <br />
+                                </div>
+                                <ul class="comments-list reply-list">
+                                    <li ng-repeat="comment in feedback.comments">
+                                        <!-- Avatar -->
+                                        <div class="comment-avatar"><img ng-src="{{comment.image}}"> alt=""></div>
+                                        <!-- Contenedor del Comentario -->
+                                        <div class="comment-box">
+                                            <div class="comment-head">
+                                                <h6 class="comment-name">{{comment.firstName}}</h6>
+                                                <span>{{date| timeago}}</span>
+                                                <i class="fa fa-reply" ng-click="controller.openModal('profilesModal.html')"></i>
+                                                    <i class="fa fa-heart"></i>
+</div>
+                                            <div class="comment-content">
+                                                {{comment.message}}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+
+                                </ul>
+                            </div>
+                         
+
+                        </li>
+                      
+                    </ul>
+                </div>
+            </div>
+        </div>
+       </div>
+
+            
+
+
+
+

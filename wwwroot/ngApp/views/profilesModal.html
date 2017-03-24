@@ -1,0 +1,16 @@
+﻿<div class="modal-content">
+    <div class="modal-header modal-header-danger">
+        <button type="button" class="close" ng-click="modal.closeModal()">&times;</button>
+        <h2 class="sloganFont">Reply</h2>
+    </div>
+    <!--Add a comment to feedback on anyone's page!-->
+    <div class="modal-body">
+        <form class="form-group" ng-submit="modal.addComment(something)">
+            <textarea rows="5" ng-model="something.message" class="form-control" id="comment" />
+            <br />
+            <br />
+            <input type="submit" class="btn btn-success btn-sm" value="Submit" />
+            <button type="button" ng-click="modal.closeModal()" class="btn btn-danger btn-sm" value="Close">Close</button>
+        </form>
+    </div>
+</div>

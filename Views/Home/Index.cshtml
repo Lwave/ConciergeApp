@@ -1,0 +1,92 @@
+<html ng-app="ConciergeApp">
+<head>
+    <title>ConciergeApp</title>
+    <script src="https://use.fontawesome.com/57d0cd9dba.js"></script>
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/bower_components/angular-google-places-autocomplete/dist/autocomplete.min.css" rel="stylesheet" />
+    <base href="/" />
+    <link href="../../css/StyleSheet.css" rel="stylesheet" />
+    @*<link href="~/css/flex.css" rel="stylesheet" />*@
+
+</head>
+<body ng-controller="AccountController as account" id="{{backgroundImage}}" ng-cloak>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href="#">Concierge</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
+                    <li><a ui-sref="about">About</a></li>
+                    <li class="dropdown" ng-show="account.isLoggedIn()">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="profile">My Profile</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a ui-sref="editProfile">Edit Profile</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a ui-sref="myFriends">My Friends</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a ui-sref="login" ng-show="!account.isLoggedIn()">Login</a></li>
+                            <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form id="login" class="navbar-form navbar-right" role="form" ng-controller="LoginController as login"
+                      ng-hide="account.isLoggedIn()">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="email" type="email" class="form-control" name="email" value="" placeholder="Email Address"
+                               ng-model="login.loginUser.email">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="password" type="password" class="form-control" name="password" value="" placeholder="Password"
+                               ng-model="login.loginUser.password">
+                    </div>
+                    <input type="button" ng-click="login.login()" class="btn btn-danger" value="Login">
+                    <button type="submit" class="btn btn-primary" ui-sref="register">Register</button>
+                    
+                    <!--Login using your Google account-->
+                    <strong ng-repeat="externalLogin in account.externalLogins">
+                        Sign in with <a target="_self" href="/api/account/ExternalLogin?provider={{externalLogin.authenticationScheme}}&returnUrl=/"><i class="fa fa-google" aria-hidden="true"></i></a>
+                    </strong>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid"><ui-view></ui-view></div>
+
+    <!-- Library Files -->
+    <script src="~/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.js"></script>
+    <script src="~/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="~/bower_components/ngmap/build/scripts/ng-map.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD10NZ665gJtfV-ZBcW9R7kShyThvHelJQ&libraries=places"></script>
+    <script src="~/bower_components/angular-google-places-autocomplete/dist/autocomplete.min.js"></script>
+    <script src="~/bower_components/ng-timeago/ngtimeago.js"></script>
+
+    <!-- App Files-->
+    <script src="/ngapp/app.js"></script>
+    <script src="/ngapp/controllers/controllers.js"></script>
+    <script src="/ngapp/services/services.js"></script>
+    <script src="~/ngApp/controllers/HomeController.js"></script>
+    <script src="~/ngApp/controllers/detailsController.js"></script>
+    <script src="~/ngApp/controllers/searchResultsController.js"></script>
+    <script src="~/ngApp/controllers/profileController.js"></script>
+    <!-- Security -->
+    <script src="/ngapp/controllers/accountcontroller.js"></script>
+    <script src="/ngapp/services/accountservice.js"></script>
+</body>
+</html>

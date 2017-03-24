@@ -1,0 +1,42 @@
+<div id="register-image">
+    <center>
+        <h1 id="register">Welcome to Concierge App</h1>
+    </center>
+    <fieldset>
+        <center><h2 id="register">Sign-Up</h2></center>
+        <ul>
+            <li ng-repeat="message in controller.validationMessages">
+                {{message}}
+            </li>
+        </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4">
+                    <form ng-submit="controller.register()" class="form-login">
+
+                        <input type="text" ng-model="controller.registerUser.firstName" id="firstName"
+                               class="form-control input-sm chat-input" placeholder="First Name" required />
+                        <br />
+                        <input type="text" ng-model="controller.registerUser.lastName" id="lastName"
+                               class="form-control input-sm chat-input" placeholder="Last Name" required />
+                        <br />
+                        <input type="email" ng-model="controller.registerUser.email" id="email"
+                               class="form-control input-sm chat-input" placeholder="Email" required />
+                        <br />
+                        <input type="password" ng-model="controller.registerUser.password" id="password"
+                               class="form-control control-label input-sm chat-input" placeholder="Password" required />
+                        <br />
+                        <input type="password" ng-model="controller.registerUser.confirmPassword" id="confirm"
+                               class="form-control control-label input-sm chat-input" placeholder="Confirm Password" required />
+                        <br />
+                        <div class="wrapper">
+                            <span class="btn-group-btn">
+                                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

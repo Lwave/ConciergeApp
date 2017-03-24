@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <link href="../../css/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="login-image">
+        <center>
+            <fieldset>
+                <legend>Login with a Social Provider</legend>
+                <h4 ng-repeat="externalLogin in account.externalLogins">
+                    <a target="_self" href="/api/account/ExternalLogin?provider={{externalLogin.authenticationScheme}}&returnUrl=/"><i class="fa fa-google" aria-hidden="true">  Google</i></a>
+                </h4>
+            </fieldset>
+        </center>
+        <center>
+            <fieldset>
+                <legend id="login">Login</legend>
+                <ul>
+                    <li ng-repeat="error in controller.validationMessages">
+                        {{error}}
+                    </li>
+                </ul>
+                <form ng-submit="controller.login()">
+
+                    <div class="login-form">
+
+                        <input class="email form-control" placeholder="Email" ng-model="controller.loginUser.email" />
+                        <input class="password form-control" placeholder="Password" ng-model="controller.loginUser.password" />
+                        <button id="button" type="submit" class="btn btn-danger" value="Login">Login</button>
+                        <button type="submit" class="btn btn-primary" ui-sref="register">Register</button>
+                    </div>
+                </form>
+            </fieldset>
+        </center>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,16 @@
+<div id="home-image">
+    <div class="createSurroundCenter">
+        <div class="createSurround">
+            <h1 class="sloganFont">Find What You've Been Looking For</h1>
+            <div class="btn btn-lg btn-danger" ng-hide="account.isLoggedIn()">
+                <a ui-sref="register" style="color: #fff; text-decoration: none;">Create Your Free Account</a>
+            </div>
+            <!--this is for testing the google places via search-->
+            <form ng-submit="controller.searchPlacesByKeyword(keyword, loc)">
+                <p><input class="form-control" id="Autocomplete" ng-autocomplete="result2" details="details2" options="options2" placeholder="Keyword" ng-model="keyword" /></p>
+                <p><input g-places-autocomplete class="form-control" placeholder="Near" id="Autocomplete" ng-model="loc" /></p>
+                <input type="submit" class="btn btn-success btn-lg" />
+            </form>
+        </div>
+    </div>
+</div>

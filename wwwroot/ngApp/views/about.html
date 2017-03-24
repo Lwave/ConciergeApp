@@ -1,0 +1,24 @@
+GET LIST OF BUSINESSES IN DATABASE
+
+<!--Map with marker cluster-->
+<!--Infowindow-ng-click-->
+
+<ng-map zoom="11" center="current-location" style="height:50%; width:50%">
+    <marker ng-repeat="business in controller.businesses"
+            id="{{business.id}}"
+            position="{{business.address}}"
+            on-mouseover="map.showInfoWindow('business')">
+    </marker>
+    <info-window id="business" ng-repeat="business in controller.businesses">
+        <div>
+            Name: <a ui-sref="details({id: business.id})">{{business.name}}</a><br />
+            Address: {{business.address}}<br />
+        </div>
+    </info-window>
+</ng-map>
+
+<ul>
+    <li ng-repeat="business in controller.businesses">
+        <a ui-sref="details({id: business.id})">{{this.business.name}}</a> {{this.business.address}}
+    </li>
+</ul>
